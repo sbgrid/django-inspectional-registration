@@ -2,8 +2,8 @@
 from __future__ import unicode_literals
 """
 Automatically log activated user in when they have activated with their activation
-link. This doesn't happen when the user was activated programatically with Django
-Admin site.
+link. This doesn't happen when the user was activated programmatically with 
+Django Admin site.
 
 It is originally written by 'bluejeansummer' in 
 https://bitbucket.org/ubernostrum/django-registration/pull-request/5/optional-auto-login

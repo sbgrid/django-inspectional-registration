@@ -16,8 +16,8 @@ class RegistrationSupplementBase(models.Model):
 
     Registration supplement model is used to add supplemental information to
     the account registration. The supplemental information is written by the
-    user who tried to register the site and displaied in django admin page to
-    help determine the acceptance/rejection of the registration
+    user who tried to register the site and displayed in the django admin page 
+    to help determine the acceptance/rejection of the registration.
 
     The ``__str__()`` method is used to display the summary of the 
     supplemental information in django admin's change list view. Thus subclasses
@@ -25,18 +25,20 @@ class RegistrationSupplementBase(models.Model):
 
     The ``get_form_class()`` is a class method return a value of ``form_class``
     attribute to determine the form class used for filling up the supplemental
-    informatin in registration view if ``form_class`` is specified. Otherwise the
-    method create django's ``ModelForm`` and return.
+    information in registration view if ``form_class`` is specified. Otherwise 
+    the method create django's ``ModelForm`` and return.
 
-    The ``get_admin_fields()`` is a class method return a list of field names
-    displayed in django admin site. It simply return a value of ``admin_fields`` 
-    attribute in default. If the method return ``None``, then all fields except
-    ``id`` (and fields in ``admin_excludes``) will be displayed.
+    The ``get_admin_fields()`` is a class method that returns a list of field 
+    names displayed in the django admin site. It simply return a value of 
+    ``admin_fields`` attribute in default. If the method return ``None``, then 
+    all fields except``id`` (and fields in ``admin_excludes``) will be 
+    displayed.
 
-    The ``get_admin_excludes()`` is a class method return a list of field names
-    NOT displayed in django admin site. It simply return a value of ``admin_excludes`` 
-    attribute in default. If the method return ``None``, then all fields selected
-    with ``admin_fields`` except ``id`` will be displayed.
+    The ``get_admin_excludes()`` is a class method that returns a list of field 
+    names NOT displayed in the django admin site. It simply return a value of 
+    ``admin_excludes`` attribute in default. If the method return ``None``, 
+    then all fields selected with ``admin_fields`` except ``id`` will be 
+    displayed.
     
     The ``registration_profile`` field is used to determine the registration
     profile associated with. ``related_name`` of the field is used to get the
@@ -56,7 +58,7 @@ class RegistrationSupplementBase(models.Model):
         abstract = True
 
     def __str__(self):
-        """return the summary of this supplemental information
+        """Return the summary of this supplemental information
 
         Subclasses must define them own method
         """

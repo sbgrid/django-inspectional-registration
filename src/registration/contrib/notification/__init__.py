@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 """
 Send notification emails to admins, managers or particular recipients 
-when new user has registered in the site
+when a new user has registered in the site
 
 admins or managers are determined from ``ADMINS`` and ``MANAGERS`` attribute of
 ``settings.py``
@@ -76,7 +76,7 @@ from registration.contrib.notification.conf import settings
 
 
 def is_notification_enable():
-    """get whether the registration notification is enable"""
+    """Determine if the registration notification is enabled"""
     if not settings.REGISTRATION_NOTIFICATION:
         return False
     if 'test' in sys.argv and not getattr(settings,

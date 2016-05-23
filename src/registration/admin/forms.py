@@ -20,10 +20,10 @@ class RegistrationAdminForm(forms.ModelForm):
 
     """A special form for handling ``RegistrationProfile``
 
-    This form handle ``RegistrationProfile`` correctly in ``save()``
-    method. Because ``RegistrationProfile`` is not assumed to handle
-    by hands, instance modification by hands is not allowed. Thus subclasses
-    should feel free to add any additions they need, but should avoid
+    This form handles ``RegistrationProfile`` correctly in the ``save()``
+    method. Because ``RegistrationProfile`` is not assumed to handle 
+    registrations by hand, instance modification by hand is not allowed. Thus 
+    subclasses should feel free to add any additions they need, but should avoid
     overriding a ``save()`` method.
 
     """
@@ -73,8 +73,8 @@ class RegistrationAdminForm(forms.ModelForm):
     def clean_action(self):
         """clean action value
 
-        Insted of raising AttributeError, validate the current registration
-        profile status and the requested action and then raise ValidationError
+        Instead of raising AttributeError, validate the current registration
+        profile status and the requested action and then raise ValidationError.
 
         """
         action_name = self.cleaned_data['action_name']
@@ -96,14 +96,14 @@ class RegistrationAdminForm(forms.ModelForm):
     def save(self, commit=True):
         """Call appropriate action via current registration backend
 
-        Insted of modifing the registration profile, this method call current
+        Instead of modifying the registration profile, this method call current
         registration backend's accept/reject/activate method as requested.
 
         """
         fail_message = 'update' if self.instance.pk else 'create'
         opts = self.instance._meta
         if self.errors:
-            raise ValueError("The %s chould not be %s because the data did'nt"
+            raise ValueError("The %s could not be %s because the data did not"
                              "validate." % (opts.object_name, fail_message))
         action_name = self.cleaned_data['action_name']
         message = self.cleaned_data['message']
@@ -139,7 +139,7 @@ class RegistrationAdminForm(forms.ModelForm):
             )
         else:
             raise AttributeError(
-                'Unknwon action_name "%s" was requested.' % action_name)
+                'Unknown action_name "%s" was requested.' % action_name)
         if action_name not in ('activate', 'force_activate'):
             new_instance = self.instance.__class__.objects.get(
                 pk=self.instance.pk)

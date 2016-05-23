@@ -1,7 +1,7 @@
 {% load i18n %}
 {% blocktrans %}Dear {{ user }},{% endblocktrans %}
 
-{% blocktrans with site.name as site_name %}Your registration of {{ site_name }} was accepted by inspector.{% endblocktrans %}
+{% blocktrans with site.name as site_name %}Your registration at {{ site_name }} has been approved.{% endblocktrans %}
 
 {% trans 'Please click the following url and set your account password to finish activation.' %}
 

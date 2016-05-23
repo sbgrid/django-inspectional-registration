@@ -44,7 +44,7 @@ class RegistrationAutoLoginTestCase(TestCase):
 
     def test_no_auto_login_with_no_password(self):
         """Auto login feature should not be occur with no password 
-        (programatically activated by Django Admin action)
+        (programmatically activated by Django Admin action)
         
         """
         self.mock_request.user = AnonymousUser()
@@ -63,7 +63,7 @@ class RegistrationAutoLoginTestCase(TestCase):
         self.failIf(self.mock_request.user.is_authenticated())
 
     def test_auto_login(self):
-        """Wheather auto login feature works correctly"""
+        """Whether auto login feature works correctly"""
         self.mock_request.user = AnonymousUser()
 
         new_user = self.backend.register(

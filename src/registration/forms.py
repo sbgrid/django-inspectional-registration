@@ -72,7 +72,7 @@ class ActivationForm(forms.Form):
     def clean(self):
         """Check the passed two password are equal
         
-        Verifiy that the values entered into the two password fields match.
+        Verify that the values entered into the two password fields match.
         Note that an error here will end up in ``non_field_errors()`` because it
         doesn't apply to a single field.
 
@@ -125,7 +125,7 @@ class RegistrationForm(forms.Form):
     def clean(self):
         """Check the passed two email are equal
         
-        Verifiy that the values entered into the two email fields match.
+        Verify that the values entered into the two email fields match.
         Note that an error here will end up in ``non_field_errors()`` because
         it doesn't apply to a single field.
 

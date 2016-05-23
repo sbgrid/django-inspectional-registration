@@ -57,11 +57,11 @@ class DefaultRegistrationBackend(RegistrationBackendBase):
 
     """Default registration backend class
 
-    A registration backend which floows a simple workflow:
+    A registration backend which follows a simple workflow:
 
-    1.  User sigs up, inactive account with unusable password is created.
+    1.  User signs up, an inactive account with unusable password is created.
 
-    2.  Inspector accept or reject the account registration.
+    2.  Inspector accepts or rejects the account registration.
 
     3.  Email is sent to user with/without activation link (without when
         rejected)
@@ -91,9 +91,9 @@ class DefaultRegistrationBackend(RegistrationBackendBase):
         -   ``registration/activation_email.txt``
         -   ``registration/activation_email_subject.txt``
 
-    Additinally, registration can be temporarily closed by adding the setting
+    Additionally, registration can be temporarily closed by adding the setting
     ``REGISTRATION_OPEN`` and setting it to ``False``. Omitting this setting,
-    or setting it to ``True``, will be imterpreted as meaning that registration
+    or setting it to ``True``, will be interpreted as meaning that registration
     is currently open and permitted.
 
     Internally, this is accomplished via storing an activation key in an
@@ -105,16 +105,16 @@ class DefaultRegistrationBackend(RegistrationBackendBase):
 
     def register(self, username, email, request,
                  supplement=None, send_email=None):
-        """register new user with ``username`` and ``email``
+        """Register new user with ``username`` and ``email``
 
-        Given a username, email address, register a new user account, which
-        will initially be inactive and has unusable password.
+        Given a username, & email address, register a new user account, which
+        will initially be inactive and has an unusable password.
 
         Along with the new ``User`` object, a new
         ``registration.models.RegistrationProfile`` will be created, tied to
         that ``User``, containing the inspection status and activation key
         which will be used for this account (activation key is not generated
-        untill its inspection status is set to ``accepted``)
+        until its inspection status is set to ``accepted``)
 
         An email will be sent to the supplied email address; The email will be
         rendered using two templates. See the documentation for
@@ -156,11 +156,11 @@ class DefaultRegistrationBackend(RegistrationBackendBase):
 
     def accept(self, profile, request, send_email=None, message=None,
                force=False):
-        """accept the account registration of ``profile``
+        """Accept the account registration of ``profile``
 
         Given a profile, accept account registration, which will
-        set inspection status of ``profile`` to ``accepted`` and generate new
-        activation key of ``profile``.
+        set the inspection status of ``profile`` to ``accepted`` and generate 
+        new activation key of ``profile``.
 
         An email will be sent to the supplied email address; The email will be
         rendered using two templates. See the documentation for
@@ -172,7 +172,7 @@ class DefaultRegistrationBackend(RegistrationBackendBase):
 
         After successful acceptance, the signal
         ``registration.signals.user_accepted`` will be sent, with the newly
-        accepted ``User`` as the keyword argument ``uesr``, the
+        accepted ``User`` as the keyword argument ``user``, the
         ``RegistrationProfile`` of the ``User`` as the keyword argument
         ``profile`` and the class of this backend as the sender
 
@@ -197,7 +197,7 @@ class DefaultRegistrationBackend(RegistrationBackendBase):
         return accepted_user
 
     def reject(self, profile, request, send_email=None, message=None):
-        """reject the account registration of ``profile``
+        """Reject the account registration of ``profile``
 
         Given a profile, reject account registration, which will
         set inspection status of ``profile`` to ``rejected`` and delete
@@ -213,7 +213,7 @@ class DefaultRegistrationBackend(RegistrationBackendBase):
 
         After successful rejection, the signal
         ``registration.signals.user_rejected`` will be sent, with the newly
-        rejected ``User`` as the keyword argument ``uesr``, the
+        rejected ``User`` as the keyword argument ``user``, the
         ``RegistrationProfile`` of the ``User`` as the keyword argument
         ``profile`` and the class of this backend as the sender
 
@@ -237,7 +237,7 @@ class DefaultRegistrationBackend(RegistrationBackendBase):
 
     def activate(self, activation_key, request, password=None, send_email=None,
                  message=None, no_profile_delete=False):
-        """activate user with ``activation_key`` and ``password``
+        """Activate user with ``activation_key`` and ``password``
 
         Given an activation key, password, look up and activate the user
         account corresponding to that key (if possible) and set its password.
@@ -254,7 +254,7 @@ class DefaultRegistrationBackend(RegistrationBackendBase):
 
         After successful activation, the signal
         ``registration.signals.user_activated`` will be sent, with the newly
-        activated ``User`` as the keyword argument ``uesr``, the password
+        activated ``User`` as the keyword argument ``user``, the password
         of the ``User`` as the keyword argument ``password``, whether the
         password has generated or not as the keyword argument ``is_generated``
         and the class of this backend as the sender

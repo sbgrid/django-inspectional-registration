@@ -98,7 +98,7 @@ class RegistrationManager(models.Manager):
         be set after activation.
 
         This method is transactional. Thus if some exception has occur in this
-        method, the newly created user will be rollbacked.
+        method, the newly created user will be rolled-back.
 
         """
         User = get_user_model()
@@ -129,8 +129,8 @@ class RegistrationManager(models.Manager):
 
         This method **DOES** works even after ``reject_registration`` has called
         (this mean the account registration has rejected previously) because 
-        rejecting user by mistake may occur in this real world :-p If the account 
-        registration has already accepted, returning will be ``None``
+        rejecting user by mistake may occur in this real world :-p If the 
+        account  registration has already accepted, returning will be ``None``.
 
         The ``date_joined`` attribute of ``User`` updated to now in this
         method and ``activation_key`` of ``RegistrationProfile`` will
@@ -198,9 +198,9 @@ class RegistrationManager(models.Manager):
         account. Returning will be ``None`` if the account registration has not
         accepted or activation key has expired.
 
-        if passed ``password`` is ``None`` then random password will be generated
-        and set to the ``User``. If the password is generated, ``is_generated``
-        will be ``True``
+        If the passed ``password`` is ``None`` then a random password will be 
+        generated for the User. If the password is generated, ``is_generated``
+        will be ``True``.
 
         Use returning value like::
 
@@ -213,8 +213,9 @@ class RegistrationManager(models.Manager):
                 # password -- a raw password of ``User``
                 # is_generated -- ``True`` if the password is generated
 
-        When activation has success, the ``RegistrationProfile`` of the ``User``
-        will be deleted from database because the profile is no longer required.
+        When activation has succeeded, the ``RegistrationProfile`` of the 
+        ``User``will be deleted from database because the profile is no longer 
+        required.
 
         """
         try:
@@ -260,10 +261,10 @@ class RegistrationManager(models.Manager):
         ``manage.py cleanupexpiredregistration`` (for just expired users) or
         ``manage.py cleanupregistration`` (for expired or rejected users).
 
-        Reqularly clearing out accounts which have never been activated servers
+        Regularly clearing out accounts which have never been activated servers
         two useful purposes:
 
-        1.  It alleviates the ocasional need to reset a ``RegistrationProfile``
+        1.  It alleviates the occasional need to reset a ``RegistrationProfile``
             and/or re-send an activation email when a user does not receive or
             does not act upon the initial activation email; since the account
             will be deleted, the user will be able to simply re-register and
@@ -310,10 +311,10 @@ class RegistrationManager(models.Manager):
         ``manage.py cleanuprejectedregistration`` (for just rejected users) or
         ``manage.py cleanupregistration`` (for expired or rejected users).
 
-        Reqularly clearing out accounts which have never been activated servers
+        Regularly clearing out accounts which have never been activated servers
         two useful purposes:
 
-        1.  It alleviates the ocasional need to reset a ``RegistrationProfile``
+        1.  It alleviates the occasional need to reset a ``RegistrationProfile``
             and/or re-send an activation email when a user does not receive or
             does not act upon the initial activation email; since the account
             will be deleted, the user will be able to simply re-register and
@@ -403,8 +404,8 @@ class RegistrationProfile(models.Model):
     def _get_status(self):
         """get inspection status of this profile
 
-        this will return 'expired' for profile which is accepted but
-        activation key has expired
+        this will return 'expired' for profiles which are accepted but whose
+        activation key has expired.
 
         """
         if self.activation_key_expired():
