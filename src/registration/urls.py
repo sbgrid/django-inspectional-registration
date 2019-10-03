@@ -47,10 +47,10 @@ if settings.REGISTRATION_DJANGO_AUTH_URLS_ENABLE:
         )
 
     urlpatterns += [
-        url(r'^login/$', auth_views.login,
+        url(r'^login/$', auth_views.LoginView.as_view(),
             {'template_name': 'registration/login.html'},
             name=prefix+'login'+suffix),
-        url(r'^logout/$', auth_views.logout,
+        url(r'^logout/$', auth_views.LogoutView.as_view(),
             {'template_name': 'registration/logout.html'},
             name=prefix+'logout'+suffix),
         url(r'^password/change/$', auth_views.password_change,
