@@ -50,7 +50,8 @@ class RegistrationSupplementBase(models.Model):
     registration_profile = models.OneToOneField(
             'registration.RegistrationProfile',
             verbose_name=_('registration profile'),
-            editable=False, related_name='_%(app_label)s_%(class)s_supplement')
+            editable=False, related_name='_%(app_label)s_%(class)s_supplement',
+            on_delete=models.CASCADE)
 
     class Meta:
         abstract = True
