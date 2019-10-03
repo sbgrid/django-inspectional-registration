@@ -369,7 +369,8 @@ class RegistrationProfile(models.Model):
     )
     user = models.OneToOneField(user_model_label, verbose_name=_('user'),
                                 related_name='registration_profile',
-                                editable=False)
+                                editable=False,
+                               on_delete=models.CASCADE)
     _status = models.CharField(_('status'), max_length=10, db_column='status',
                                choices=STATUS_LIST, default='untreated',
                                editable=False)
