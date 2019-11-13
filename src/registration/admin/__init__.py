@@ -50,7 +50,7 @@ from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.contrib import admin
 from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.core.exceptions import ImproperlyConfigured
 from django.views.decorators.csrf import csrf_protect
 from django.utils.safestring import mark_safe
