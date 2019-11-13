@@ -26,7 +26,7 @@ Author
 Supported python versions
     2.6, 2.7, 3.2, 3.3, 3.4, 3.5
 Supported django versions
-    1.5 - 1.9
+    1.5 - 1.10
 
 django-inspectional-registration is a enhanced application of
 django-registration_. The following features are available
@@ -92,6 +92,18 @@ You can compile the latest message files with the following command
 The command above is automatically called before ``sdist`` command if you call
 ``python manage.py sdist``.
 
+Email
+---------------------------------------------------------------------------------
+REGISTRATION_FROM_EMAIL is used as the *FROM* email address emails send by 
+django-inspectional-registration. If REGISTRATION_FROM_EMAIL is not set the Django 
+setting _DEFAULT_FROM_EMAIL: <https://docs.djangoproject.com/en/dev/ref/settings/#default-from-email/> 
+will be used instead.
+
+To set REGISTRATION_FROM_EMAIL add REGISTRATION_FROM_EMAIL to your settings file.
+
+Example:
+
+``REGISTRATION_FROM_EMAIL = 'help@example.com'``
 
 Backward incompatibility
 ---------------------------------------------------------------------------------
