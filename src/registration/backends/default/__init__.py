@@ -42,7 +42,7 @@ Original License::
 """
 __author__ = 'Alisue <lambdalisue@hashnote.net>'
 import sys
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from registration import signals
 from registration.conf import settings

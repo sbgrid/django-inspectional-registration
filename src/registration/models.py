@@ -55,7 +55,7 @@ import datetime
 from django.db import models
 from django.template.loader import render_to_string
 from django.core.exceptions import ObjectDoesNotExist
-from django.utils.text import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import python_2_unicode_compatible
 
 from registration.conf import settings
@@ -370,7 +370,8 @@ class RegistrationProfile(models.Model):
     )
     user = models.OneToOneField(user_model_label, verbose_name=_('user'),
                                 related_name='registration_profile',
-                                editable=False)
+                                editable=False,
+                               on_delete=models.CASCADE)
     _status = models.CharField(_('status'), max_length=10, db_column='status',
                                choices=STATUS_LIST, default='untreated',
                                editable=False)

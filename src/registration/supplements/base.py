@@ -6,7 +6,7 @@ A registration supplemental abstract model
 __author__ = 'Alisue <lambdalisue@hashnote.net>'
 from django.db import models
 from django.forms.models import modelform_factory
-from django.utils.text import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import python_2_unicode_compatible
 
 
@@ -52,7 +52,8 @@ class RegistrationSupplementBase(models.Model):
     registration_profile = models.OneToOneField(
             'registration.RegistrationProfile',
             verbose_name=_('registration profile'),
-            editable=False, related_name='_%(app_label)s_%(class)s_supplement')
+            editable=False, related_name='_%(app_label)s_%(class)s_supplement',
+            on_delete=models.CASCADE)
 
     class Meta:
         abstract = True
